@@ -32,14 +32,144 @@
 
     <style>
         html { scroll-behavior: smooth; }
+        :root {
+            --cyber-mask-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M4 9L10 5H22L28 9L26 23L21 27H11L6 23Z' fill='%230b1020' stroke='%2360a5fa' stroke-width='1.5'/%3E%3Cpath d='M7 12H15L14 17H8Z' fill='%2338bdf8' stroke='%23c4b5fd' stroke-width='.8'/%3E%3Cpath d='M17 12H25L24 17H18Z' fill='%23f472b6' stroke='%23c4b5fd' stroke-width='.8'/%3E%3Cpath d='M11 21H21M13 24H19' stroke='%23facc15' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+        }
         .gradient-text {
-            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc, #f472b6, #fb7185, #fbbf24);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .bg-grid-pattern {
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-image:
+                radial-gradient(rgba(96, 165, 250, .24) 1px, transparent 1px),
+                linear-gradient(135deg, rgba(91, 33, 182, .12), transparent 48%, rgba(219, 39, 119, .1));
             background-size: 20px 20px;
+        }
+        body {
+            background-color: #080b18;
+            background-image:
+                linear-gradient(rgba(7, 10, 24, .44), rgba(7, 10, 24, .56)),
+                url("https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/2010-02-19_16500x2000_chicago_skyline_panorama.jpg/3840px-2010-02-19_16500x2000_chicago_skyline_panorama.jpg");
+            background-position: center, center 35%;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #dbe5f5;
+        }
+        nav {
+            background-color: rgba(8, 11, 24, .88) !important;
+            border-color: rgba(148, 163, 184, .18) !important;
+        }
+        header {
+            min-height: calc(100vh - 4rem);
+            display: flex;
+            align-items: center;
+            background-color: transparent !important;
+        }
+        header.bg-grid-pattern {
+            background-image: linear-gradient(90deg, rgba(7, 11, 26, .24), rgba(11, 14, 34, .2), rgba(8, 10, 24, .34));
+            background-size: cover;
+        }
+        header > .max-w-6xl > div {
+            display: grid !important;
+            grid-template-columns: minmax(0, 1.15fr) minmax(220px, .65fr);
+            align-items: center;
+            gap: 4rem;
+        }
+        header > .max-w-6xl > div > div:first-child {
+            grid-column: 2;
+            grid-row: 1;
+            justify-self: center;
+        }
+        header > .max-w-6xl > div > div:nth-child(2) {
+            grid-column: 1;
+            grid-row: 1;
+            text-align: left;
+        }
+        header > .max-w-6xl > div > div:nth-child(2) > p {
+            margin-left: 0;
+        }
+        #about, #courses {
+            background-color: rgba(9, 14, 29, .78) !important;
+            backdrop-filter: blur(8px);
+        }
+        footer.bg-secondary {
+            background-color: rgba(8, 11, 24, .94) !important;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            inset: 0 0 auto;
+            height: 3px;
+            background: linear-gradient(90deg, #38bdf8, #6366f1, #a855f7, #ec4899, #f97316, #facc15, #22c55e);
+        }
+        .bg-white { background-color: #10172a !important; }
+        .bg-slate-50 { background-color: #0c1222 !important; }
+        .bg-slate-100 { background-color: #182238 !important; }
+        .bg-secondary { background-color: #11182b !important; }
+        .bg-slate-700 { background-color: #182238 !important; }
+        .text-secondary, .text-slate-800 { color: #e7eefb !important; }
+        .text-slate-700, .text-slate-600 { color: #aab8d0 !important; }
+        .text-slate-500, .text-slate-400 { color: #8493ad !important; }
+        .personal-statement {
+            color: #fde047 !important;
+            text-shadow: 0 0 20px rgba(250, 204, 21, .22);
+            animation: statement-fade-in .9s ease-out .15s both;
+        }
+        @keyframes statement-fade-in {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .text-primary { color: #60a5fa !important; }
+        .text-blue-400 { color: #93c5fd !important; }
+        .border-slate-200, .border-slate-100 { border-color: rgba(148, 163, 184, .2) !important; }
+        .border-blue-100 { border-color: rgba(96, 165, 250, .35) !important; }
+        .bg-blue-50 { background-color: rgba(37, 99, 235, .16) !important; }
+        .bg-blue-600\/30 { background-color: rgba(37, 99, 235, .2) !important; }
+        .border-blue-400\/50 { border-color: rgba(96, 165, 250, .5) !important; }
+        .shadow-sm, .shadow-md, .shadow-xl {
+            box-shadow: 0 16px 42px rgba(0, 0, 0, .24) !important;
+        }
+        .group:hover {
+            border-color: rgba(168, 85, 247, .55);
+            box-shadow: 0 16px 38px rgba(76, 29, 149, .18);
+        }
+        a:focus-visible {
+            outline: 2px solid #f472b6;
+            outline-offset: 3px;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            body {
+                cursor: var(--cyber-mask-cursor) 16 16, auto !important;
+            }
+            a, button, [role="button"], summary {
+                cursor: var(--cyber-mask-cursor) 16 16, pointer !important;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .personal-statement { animation: none; }
+        }
+        @media (max-width: 767px) {
+            header {
+                min-height: auto;
+            }
+            header > .max-w-6xl > div {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 2rem;
+            }
+            header > .max-w-6xl > div > div:first-child {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            header > .max-w-6xl > div > div:nth-child(2) {
+                grid-column: 1;
+                grid-row: 2;
+                text-align: center;
+            }
+            header > .max-w-6xl > div > div:nth-child(2) > p {
+                margin-left: auto;
+            }
         }
     </style>
 </head>
@@ -102,14 +232,14 @@
                 <div class="text-center md:text-left flex-grow">
                     <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-primary text-sm font-bold tracking-wider mb-4 border border-blue-100">
                         <!-- STUDENT INSTRUCTION: Update your major or current status -->
-                        Computer Science Major | Class of 2028
+                        Cybersecurity Expert | Software Engineering
                     </span>
                     <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-secondary">
                         Hi, I'm <span class="gradient-text">Dhru P.</span>.
                     </h1>
-                    <p class="text-xl text-slate-600 mb-8 max-w-2xl leading-relaxed">
+                    <p class="personal-statement text-xl text-slate-600 mb-8 max-w-2xl leading-relaxed">
                         <!-- STUDENT INSTRUCTION: Write a brief elevator pitch about yourself -->
-                        A passionate software engineering student specializing in web development and cybersecurity. Currently building my foundation in computational thinking and elegant technical writing.
+                        Cybersecurity expert focused on protecting systems and strengthening the software that powers them. I bring a software engineering foundation, with a focus on clear technical communication and thoughtful security.
                     </p>
                     <div class="flex flex-wrap justify-center md:justify-start gap-4">
                         <a href="#courses" class="bg-primary text-white hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold shadow-md transition">
@@ -257,6 +387,9 @@
             <div class="text-sm">
                 &copy; <script>document.write(new Date().getFullYear())</script> Dhru P. Built as part of CSS:100.
             </div>
+            <p class="mt-3 text-xs">
+                Chicago skyline photo by <a class="text-blue-400 hover:underline" href="https://commons.wikimedia.org/wiki/File:2010-02-19_16500x2000_chicago_skyline_panorama.jpg" target="_blank" rel="noopener noreferrer">J. Crocker</a>.
+            </p>
         </div>
     </footer>
 
